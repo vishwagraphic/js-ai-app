@@ -8,6 +8,18 @@
     "dev": "bun --watch run index.ts"
   },
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "@google/genai": "^1.32.0",
+    "@huggingface/inference": "^4.13.5",
+    "@prisma/adapter-mariadb": "^7.1.0",
+    "@prisma/client": "^7.1.0",
+    "@prisma/client-runtime-utils": "^7.1.0",
+    "dayjs": "^1.11.19",
+    "dotenv": "^16.4.7",
+    "nvm": "^0.0.4",
+    "ollama": "^0.6.3",
+    "openai": "^6.10.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.1.0"
   }
 }
