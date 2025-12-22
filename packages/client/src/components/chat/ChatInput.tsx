@@ -15,20 +15,19 @@ const ChatInput = ({ onSubmit }: Props) => {
 
   const formSubmit = handleSubmit(async ({ prompt }: FormData) => {
     reset({ prompt: '' });
-    return onSubmit && onSubmit({prompt});
+    return onSubmit && onSubmit({ prompt });
   });
 
-   const inputKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-     if (e.key === 'Enter' && !e.shiftKey) {
-       reset({ prompt: '' });
-       e.preventDefault();
-       const textarea = e.target as HTMLTextAreaElement;
-       const prompt = textarea.value;
-       textarea.value = '';
-       return onSubmit && onSubmit({prompt: prompt});
-     }
-   };
-
+  const inputKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      reset({ prompt: '' });
+      e.preventDefault();
+      const textarea = e.target as HTMLTextAreaElement;
+      const prompt = textarea.value;
+      textarea.value = '';
+      return onSubmit && onSubmit({ prompt: prompt });
+    }
+  };
 
   return (
     <div>

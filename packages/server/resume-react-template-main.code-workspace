@@ -1,11 +1,11 @@
 {
-	"folders": [
-		{
-			"path": "../../../PycharmProjects/resume-react-template-main"
-		},
-		{
-			"path": "../.."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "../../../PycharmProjects/resume-react-template-main",
+    },
+    {
+      "path": "../..",
+    },
+  ],
+  "settings": {},
 }

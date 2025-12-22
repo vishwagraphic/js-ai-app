@@ -31,7 +31,7 @@ const ChatBot = () => {
   const { reset } = useForm<FormaData>();
 
   const submitFunc = async ({ prompt }: FormaData) => {
-     try {
+    try {
       setError(null);
       setMessages((prev) => [...prev, { content: prompt, role: 'user' }]);
       setIsBotTyping(true);
@@ -55,12 +55,11 @@ const ChatBot = () => {
     } finally {
       setIsBotTyping(false);
     }
-  }
-
-  const onSubmit = async ({ prompt }: FormaData) => {
-    await submitFunc({prompt});
   };
 
+  const onSubmit = async ({ prompt }: FormaData) => {
+    await submitFunc({ prompt });
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -75,7 +74,7 @@ const ChatBot = () => {
           </div>
         )}
       </div>
-      <ChatInput onSubmit={onSubmit}/>
+      <ChatInput onSubmit={onSubmit} />
       {/* <form
         onSubmit={handleSubmit(onSubmit)}
         onKeyDown={onKeyDown}

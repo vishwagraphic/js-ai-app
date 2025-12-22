@@ -15,14 +15,13 @@ function App() {
   }, []);
 
   return (
-    
     // <div className="p-4 h-screen w-2xl flex flex-col bg-blue-200">
     //   <ChatBot />
-     
+
     // </div>
     <div>
-    <ReviewList productId={3} />
-  </div>
+      <ReviewList productId={3} />
+    </div>
   );
 }
 

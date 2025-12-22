@@ -12,10 +12,10 @@ export const reviewController = {
     }
     try {
       const reviews = await reviewsRepository.getReviews(productId);
-      const summary = await reviewsRepository.getReviewSummary(productId)
+      const summary = await reviewsRepository.getReviewSummary(productId);
       return res.json({
         summary,
-        reviews
+        reviews,
       });
     } catch (error) {
       console.error("Error fetching reviews:", error);
@@ -30,20 +30,21 @@ export const reviewController = {
       return res.status(400).json({ error: "Invalid product ID" });
     }
 
-    const product = await productRepository.getProduct(productId)
-    
-    if(!product) {
-      return res.status(400).json({error: "Invalid product"})
+    const product = await productRepository.getProduct(productId);
+
+    if (!product) {
+      return res.status(400).json({ error: "Invalid product" });
     }
 
-    const review = await reviewsRepository.getReviews(productId, 1)
+    const review = await reviewsRepository.getReviews(productId, 1);
 
-    if(!review.length){
-      return res.status(400).json({error: "Threre are no reviews for the product to summarize"})
+    if (!review.length) {
+      return res
+        .status(400)
+        .json({ error: "Threre are no reviews for the product to summarize" });
     }
 
     const response = await reviewService.reviewSummarize(productId);
-    return res.json({summary: response});
-   
+    return res.json({ summary: response });
   },
 };

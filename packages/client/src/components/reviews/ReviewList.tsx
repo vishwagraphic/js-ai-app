@@ -37,21 +37,21 @@ const ReviewList = ({ productId }: Props) => {
   };
 
   const summarizeReviews = async () => {
-        const { data } = await axios.post<summaryResponse>(
-        `api/products/${productId}/reviews/summarize`
-        );
+    const { data } = await axios.post<summaryResponse>(
+      `api/products/${productId}/reviews/summarize`
+    );
 
-        return data
+    return data;
   };
 
   const {
     mutate: handleSummarize,
     isPending: isSummaryLoading,
     isError: isSummaryError,
-    data: summarizeResponse
+    data: summarizeResponse,
   } = useMutation<summaryResponse>({
     mutationFn: () => summarizeReviews(),
-  })
+  });
   const {
     data: reviewData,
     isLoading,
@@ -106,10 +106,13 @@ const ReviewList = ({ productId }: Props) => {
               </Button>
             )}
 
-{isSummaryError && <div className='text-red-500'>Could not load summary. Try again</div>}
+            {isSummaryError && (
+              <div className="text-red-500">
+                Could not load summary. Try again
+              </div>
+            )}
           </div>
         )}
-        
       </div>
       {reviewData?.reviews.map((review) => {
         return (

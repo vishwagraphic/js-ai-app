@@ -1,6 +1,10 @@
 import OpenAI from "openai"; // Make sure to install the 'openai' package
-import { chatCompletion, InferenceClient, summarization } from "@huggingface/inference";
-import summarizePrompt from "../prompts/summarizer-reviews.txt"
+import {
+  chatCompletion,
+  InferenceClient,
+  summarization,
+} from "@huggingface/inference";
+import summarizePrompt from "../prompts/summarizer-reviews.txt";
 import { Ollama } from "ollama";
 
 const client = new OpenAI({
@@ -43,7 +47,7 @@ const llmClient = {
   },
 };
 
-const inferenceClient = new InferenceClient(process.env.HF_TOKEN)
+const inferenceClient = new InferenceClient(process.env.HF_TOKEN);
 
 const hfClient = {
   async summarization(text: string) {
@@ -53,7 +57,7 @@ const hfClient = {
       messages: [
         {
           role: "system",
-          content: summarizePrompt
+          content: summarizePrompt,
         },
         {
           content: text,
@@ -62,32 +66,31 @@ const hfClient = {
       ],
     });
     //return response.summary_text;
-    return response.choices[0]?.message.content
-  }
-  
-}
-const ollamaClient = new Ollama()
+    return response.choices[0]?.message.content;
+  },
+};
+const ollamaClient = new Ollama();
 
 const ollaClient = {
-  async ollaReference(text:string) {
+  async ollaReference(text: string) {
     const response = await ollamaClient.chat({
-      model: 'tinyllama',
+      model: "tinyllama",
       messages: [
         {
           role: "system",
-          content: summarizePrompt
+          content: summarizePrompt,
         },
         {
           content: text,
           role: "user",
         },
-      ]
-    })
+      ],
+    });
 
-    console.log(response)
+    console.log(response);
 
-    return response.message.content
-  }
-}
+    return response.message.content;
+  },
+};
 
 export { llmClient, hfClient, ollaClient };
